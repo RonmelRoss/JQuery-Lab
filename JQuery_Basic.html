@@ -3,15 +3,38 @@
         <title>Basic jQuery Demonstration</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $("p").hide();
-                    document.write("New paragraph.");
+            $("#first").ready(function(){
+                // var obj = {};
+                // obj.name = ""
+                // obj["name"] = ""
+
+                // obj = {name: "", }
+                $("#first").click('#first',function(){
+                    $("#third").hide("slow", function(){    //Using callback functions
+                        alert("The third paragraph is now hiddern.");
+                    });
+                    
+                    document.getElementById("first").innerHTML = "New paragraph!"; //write("New paragraph.");
+                });
+
+                //Using the on method
+                $("#second").on({
+                    mouseenter: function(){
+                        $(this).css("background-color", "lightgray");
+                    }, 
+                    mouseleave: function(){
+                        $(this).css("background-color", "lightblue");
+                    }, 
+                    click: function(){
+                        $(this).css("background-color", "yellow");
+                    } 
                 });
             });
         </script>
     </head>
     <body>
-        <p>This is a paragraph. Click me to disapper!</p>
+        <p id="first">This is a paragraph. Click me to disapper!</p>
+        <p id="second">This is the second paragaraph.</p>
+        <p id="third">This is the third paragraph.</p>
     </body>
 </html>
